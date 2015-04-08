@@ -76,6 +76,7 @@ function initialize(latitude, longitude){
 			position: place.geometry.location
 		});
 
+		// trying to grab the directions for a directions view
 		var url = 'https://maps.googleapis.com/maps/api/directions/json?origin=' + pyrmont + '&destination=' + place.name + '&mode=driving';
 		// $.getJSON(url, function (data) {
 		//     for(var i=0;i<data.results.length;i++) {
@@ -104,6 +105,7 @@ function initialize(latitude, longitude){
 			infowindow.setContent("<h5>" + place.name + '</h5><br><a target="_blank" href="http://maps.google.com/maps?saddr=' + pyrmont + '&daddr=' + place.name + '&mode=driving">Directions</a>');
 			infowindow.open(map, this);
 
+			// trying to grab formatted address via geocode
 			$.ajax({
 				url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + place.name + "/",
 				type: "GET",
