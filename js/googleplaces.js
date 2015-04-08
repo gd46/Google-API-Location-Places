@@ -17,7 +17,6 @@ function getGeoLocation(){
 		function showPosition(position){
 			latitude = position.coords.latitude;
 			longitude = position.coords.longitude;
-			document.getElementById("test").innerHTML = "Lat " + latitude + " Long " + longitude;
 			initialize(latitude, longitude);
 		}
 	} else {
@@ -64,6 +63,8 @@ function initialize(latitude, longitude){
 		if(status == google.maps.places.PlacesServiceStatus.OK){
 			for(var i = 0; i < results.length; i++){
 				var place = results[i];
+				//var locations = document.getElementById("locations-list");
+				$('ul').append('<li>' + place.name + '</li>');
 				createMarker(results[i]);
 			}
 		}
