@@ -79,18 +79,23 @@ function initialize(latitude, longitude){
 		var url = 'https://maps.googleapis.com/maps/api/directions/json?origin=' + pyrmont + '&destination=' + place.name + '&mode=driving';
 		// $.getJSON(url, function (data) {
 		//     for(var i=0;i<data.results.length;i++) {
-		//         var address = data.results[i].formatted_address;
+		//         //var address = data.results[i].formatted_address;
+		//         console.log(data.routes[0].legs[0].end_address);
 		//     }
 		//     console.log(data);
 		// });
-		$.ajax({
-            url: url, 
-            type: "GET",   
-            dataType: 'jsonp',
-            success: function(response){                          
-               	console.log(response);                  
-            }           
-        });  
+		// $.ajax({
+  //           url: url, 
+  //           type: "GET",   
+  //           crossDomain: true,
+  //           dataType: 'jsonp',
+  //           success: function(response){ 
+  //           	for(var i=0; i<response.length;i++){
+  //           		console.log(response[i]);
+  //           	}                                 
+  //           }           
+  //       });  
+		
 		//infowindow.setContent("<h5>" + place.name + '</h5><br><a href="https://maps.googleapis.com/maps/api/directions/json?origin=' + pyrmont + '&' + 'destination=' + place.name + '&mode=driving">Directions</a>');
 
 		google.maps.event.addListener(marker, 'click', function() {
@@ -98,6 +103,22 @@ function initialize(latitude, longitude){
 			//infowindow.setContent("<h5>" + place.name + '</h5><br><a href="https://maps.googleapis.com/maps/api/directions/json?origin=' + pyrmont + '&' + 'destination=' + place.name + '&mode=driving">Directions</a>');
 			infowindow.setContent("<h5>" + place.name + '</h5><br><a target="_blank" href="http://maps.google.com/maps?saddr=' + pyrmont + '&daddr=' + place.name + '&mode=driving">Directions</a>');
 			infowindow.open(map, this);
+
+			$.ajax({
+				url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + place.name + "/",
+				type: "GET",
+				crossDomain: true,
+				dataType: 'json',
+				error: function(xhr, status, error) {
+	                    alert(error);
+	                },
+				success: function(response){
+					for(var i=0; i<response.length;i++){
+						var address = response[0].address_components.formatted_address;
+						console.log(response[0].address_components.formatted_address);
+					}
+				}
+			})
 		});
 
 		google.maps.event.addDomListener(map, 'click', function(){
