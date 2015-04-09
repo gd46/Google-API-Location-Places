@@ -5,13 +5,18 @@
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=places"></script>
 		<script type="text/javascript" src="js/jquery-min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
 		<script type="text/javascript" src="js/googleplaces.js"></script>
 	</head>
 
 	<body>
 		<div id="map-canvas"></div>
-		<ul id="locations-list"></ul>
+		<ol id="locations-list">
+			<h5 id="location-list-title">Hospitals Nearby</h5>
+		</ol>
 		<input type="button" value="Google Hospitals" onclick="getGeoLocation()";>
+		<input type="button" value="test" id="test">
 	</body>
 </html>
 

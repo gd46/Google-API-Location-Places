@@ -1,6 +1,25 @@
-#map-canvas{
-	margin-left: auto;
-	margin-right: auto;
+#map-canvas {
+    margin-left: auto;
+    margin-right: auto;
+}
+#location-list-title{
+	text-align: center;
+}
+.active{
+	/*right: 0px !important;*/
+}
+#locations-list {
+    position: fixed;
+    z-index: 99999;
+    top: 30px;
+    right: -480px;
+    background-color: white;
+    padding: 20px;
+    height: 300px;
+    overflow: scroll;
+}
+.list-place{
+	margin: 20px;
 }
 /*.labels {
      color: white;

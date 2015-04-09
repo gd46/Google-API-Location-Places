@@ -64,7 +64,7 @@ function initialize(latitude, longitude){
 			for(var i = 0; i < results.length; i++){
 				var place = results[i];
 				//var locations = document.getElementById("locations-list");
-				$('ul').append('<li>' + place.name + '</li>');
+				$('ol').append('<li class="list-place">' + place.name + '</li>');
 				createMarker(results[i]);
 			}
 		}
